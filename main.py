@@ -1,12 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from dotenv import dotenv_values, load_dotenv
-# from pymongo import MongoClient
 import motor.motor_asyncio, os
 from user_auth.routes import user as user_routes
 from products.routes import product as product_routes
-# config = dotenv_values("../.env")
 
+# config = dotenv_values("../.env")
 load_dotenv()
+
 app = FastAPI()
 
 @app.get("/")
@@ -23,14 +23,19 @@ def startup_db_client():
 def shutdown_db_client():
     app.mongodb_client.close()
 
-@app.get("/check_db_connection")
+#will check the database connection
+"""@app.get("/check_db_connection")
 async def check_db_connection():
     try:
         # Attempt to list collections to check the connection
         collections = await app.database.list_collection_names()
         return {"message": "Database connected successfully!", "collections": collections}
     except Exception as e:
-        raise HTTPException(status_code=500, detail="Database connection failed")
+        raise HTTPException(status_code=500, detail="Database connection failed")"""
+    
 
+#handling router for both app
+#user_router
 app.include_router(user_routes.router, prefix="/users", tags=["users"])  
+#products_router
 app.include_router(product_routes.router, prefix="/products", tags=["products"])  
