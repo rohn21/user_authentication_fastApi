@@ -40,7 +40,9 @@ async def check_db_connection():
     
 
 #handling router for both app
+
 #user_router
 app.include_router(user_routes.router, prefix="/users", tags=["users"])  
+
 #products_router
 app.include_router(product_routes.router, prefix="/products", tags=["products"])  
