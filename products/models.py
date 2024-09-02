@@ -1,7 +1,5 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from bson import ObjectId
-from typing import ClassVar
-
 
 class ProductModel(BaseModel):
     user_id: str
