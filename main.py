@@ -7,7 +7,12 @@ from products.routes import product as product_routes
 # config = dotenv_values("../.env")
 load_dotenv()
 
-app = FastAPI()
+# for better API documentation  visit - http://127.0.0.1:8000/redoc to understand better
+app = FastAPI(
+    title="User Authentication and CRUD operations",
+    description="This is a simple FastAPI project user registration and product management functionalities using MongoDB.",
+    version="1.0.0"
+)
 
 @app.get("/")
 async def read_root():
