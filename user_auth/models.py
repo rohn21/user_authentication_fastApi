@@ -1,11 +1,8 @@
 from pydantic import BaseModel, Field, EmailStr
 from bson import ObjectId
 from typing import Optional
-import uuid
 
 class UserModel(BaseModel):
-    # id:str = Field(default_factory=uuid.uuid4, alias="_id")
-    # id:str = Field(default_factory=lambda: str(uuid.uuid4()), alias="_id")
     id: str = Field(default_factory=lambda: str(ObjectId()), alias="_id", convert_raw=True)
     username: str
     email: EmailStr
@@ -28,9 +25,3 @@ class UserLoginModel(BaseModel):
 class LinkIdModel(BaseModel):
     email: EmailStr
     linked_id: str
-    
-    
-# class UserUpdateModel(BaseModel):
-#     username: None
-#     email: EmailStr = None
-#     password: Nonex
